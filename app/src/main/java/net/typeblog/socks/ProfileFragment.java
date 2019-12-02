@@ -9,19 +9,13 @@ import android.content.ServiceConnection;
 import android.net.VpnService;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.preference.CheckBoxPreference;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.ListPreference;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import net.typeblog.socks.util.Profile;
@@ -30,14 +24,37 @@ import net.typeblog.socks.util.Utility;
 
 import java.util.Locale;
 
-import static net.typeblog.socks.util.Constants.*;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
-public class ProfileFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener,
+import static net.typeblog.socks.util.Constants.PREF_ADV_APP_BYPASS;
+import static net.typeblog.socks.util.Constants.PREF_ADV_APP_LIST;
+import static net.typeblog.socks.util.Constants.PREF_ADV_AUTO_CONNECT;
+import static net.typeblog.socks.util.Constants.PREF_ADV_DNS;
+import static net.typeblog.socks.util.Constants.PREF_ADV_DNS_PORT;
+import static net.typeblog.socks.util.Constants.PREF_ADV_PER_APP;
+import static net.typeblog.socks.util.Constants.PREF_ADV_ROUTE;
+import static net.typeblog.socks.util.Constants.PREF_AUTH_PASSWORD;
+import static net.typeblog.socks.util.Constants.PREF_AUTH_USERNAME;
+import static net.typeblog.socks.util.Constants.PREF_AUTH_USERPW;
+import static net.typeblog.socks.util.Constants.PREF_IPV6_PROXY;
+import static net.typeblog.socks.util.Constants.PREF_PROFILE;
+import static net.typeblog.socks.util.Constants.PREF_SERVER_IP;
+import static net.typeblog.socks.util.Constants.PREF_SERVER_PORT;
+import static net.typeblog.socks.util.Constants.PREF_UDP_GW;
+import static net.typeblog.socks.util.Constants.PREF_UDP_PROXY;
+
+public class ProfileFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener,
         CompoundButton.OnCheckedChangeListener {
     private ProfileManager mManager;
     private Profile mProfile;
 
-    private Switch mSwitch;
+    private SwitchCompat mSwitch;
     private boolean mRunning = false;
     private boolean mStarting = false, mStopping = false;
     private final ServiceConnection mConnection = new ServiceConnection() {
@@ -86,16 +103,23 @@ public class ProfileFragment extends PreferenceFragment implements Preference.On
     }
 
     @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.main, menu);
 
         MenuItem s = menu.findItem(R.id.switch_main);
-        mSwitch = s.getActionView().findViewById(R.id.switch_action_button);
+
+        mSwitch = (SwitchCompat) s.getActionView();
         mSwitch.setOnCheckedChangeListener(this);
         mSwitch.postDelayed(mStateRunnable, 1000);
         checkState();
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -209,22 +233,22 @@ public class ProfileFragment extends PreferenceFragment implements Preference.On
     }
 
     private void initPreferences() {
-        mPrefProfile = (ListPreference) findPreference(PREF_PROFILE);
-        mPrefServer = (EditTextPreference) findPreference(PREF_SERVER_IP);
-        mPrefPort = (EditTextPreference) findPreference(PREF_SERVER_PORT);
-        mPrefUserpw = (CheckBoxPreference) findPreference(PREF_AUTH_USERPW);
-        mPrefUsername = (EditTextPreference) findPreference(PREF_AUTH_USERNAME);
-        mPrefPassword = (EditTextPreference) findPreference(PREF_AUTH_PASSWORD);
-        mPrefRoutes = (ListPreference) findPreference(PREF_ADV_ROUTE);
-        mPrefDns = (EditTextPreference) findPreference(PREF_ADV_DNS);
-        mPrefDnsPort = (EditTextPreference) findPreference(PREF_ADV_DNS_PORT);
-        mPrefPerApp = (CheckBoxPreference) findPreference(PREF_ADV_PER_APP);
-        mPrefAppBypass = (CheckBoxPreference) findPreference(PREF_ADV_APP_BYPASS);
-        mPrefAppList = (EditTextPreference) findPreference(PREF_ADV_APP_LIST);
-        mPrefIPv6 = (CheckBoxPreference) findPreference(PREF_IPV6_PROXY);
-        mPrefUDP = (CheckBoxPreference) findPreference(PREF_UDP_PROXY);
-        mPrefUDPGW = (EditTextPreference) findPreference(PREF_UDP_GW);
-        mPrefAuto = (CheckBoxPreference) findPreference(PREF_ADV_AUTO_CONNECT);
+        mPrefProfile = findPreference(PREF_PROFILE);
+        mPrefServer = findPreference(PREF_SERVER_IP);
+        mPrefPort = findPreference(PREF_SERVER_PORT);
+        mPrefUserpw = findPreference(PREF_AUTH_USERPW);
+        mPrefUsername = findPreference(PREF_AUTH_USERNAME);
+        mPrefPassword = findPreference(PREF_AUTH_PASSWORD);
+        mPrefRoutes = findPreference(PREF_ADV_ROUTE);
+        mPrefDns = findPreference(PREF_ADV_DNS);
+        mPrefDnsPort = findPreference(PREF_ADV_DNS_PORT);
+        mPrefPerApp = findPreference(PREF_ADV_PER_APP);
+        mPrefAppBypass = findPreference(PREF_ADV_APP_BYPASS);
+        mPrefAppList = findPreference(PREF_ADV_APP_LIST);
+        mPrefIPv6 = findPreference(PREF_IPV6_PROXY);
+        mPrefUDP = findPreference(PREF_UDP_PROXY);
+        mPrefUDPGW = findPreference(PREF_UDP_GW);
+        mPrefAuto = findPreference(PREF_ADV_AUTO_CONNECT);
 
         mPrefProfile.setOnPreferenceChangeListener(this);
         mPrefServer.setOnPreferenceChangeListener(this);
@@ -264,10 +288,28 @@ public class ProfileFragment extends PreferenceFragment implements Preference.On
 
         mPrefServer.setText(mProfile.getServer());
         mPrefPort.setText(String.valueOf(mProfile.getPort()));
+        mPrefPort.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+            @Override
+            public void onBindEditText(@NonNull EditText editText) {
+                editText.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+            }
+        });
         mPrefUsername.setText(mProfile.getUsername());
         mPrefPassword.setText(mProfile.getPassword());
+        mPrefPassword.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+            @Override
+            public void onBindEditText(@NonNull EditText editText) {
+                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+        });
         mPrefDns.setText(mProfile.getDns());
         mPrefDnsPort.setText(String.valueOf(mProfile.getDnsPort()));
+        mPrefDnsPort.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+            @Override
+            public void onBindEditText(@NonNull EditText editText) {
+                editText.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+            }
+        });
         mPrefUDPGW.setText(mProfile.getUDPGW());
         resetText(mPrefServer, mPrefPort, mPrefUsername, mPrefPassword, mPrefDns, mPrefDnsPort, mPrefUDPGW);
 
@@ -285,7 +327,7 @@ public class ProfileFragment extends PreferenceFragment implements Preference.On
 
     private void resetText(EditTextPreference... pref) {
         for (EditTextPreference p : pref) {
-            if ((p.getEditText().getInputType() & InputType.TYPE_TEXT_VARIATION_PASSWORD) != InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+            if (!p.getKey().equals("auth_password")) {
                 p.setSummary(p.getText());
             } else {
                 if (p.getText().length() > 0)
@@ -299,7 +341,7 @@ public class ProfileFragment extends PreferenceFragment implements Preference.On
     }
 
     private void resetTextN(EditTextPreference pref, Object newValue) {
-        if ((pref.getEditText().getInputType() & InputType.TYPE_TEXT_VARIATION_PASSWORD) != InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+        if (!pref.getKey().equals("auth_password")) {
             pref.setSummary(newValue.toString());
         } else {
             String text = newValue.toString();
