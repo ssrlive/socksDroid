@@ -8,6 +8,15 @@ android {
         targetSdkVersion 29
         versionCode 12
         versionName "1.0.3"
+
+        externalNativeBuild.ndkBuild {
+            abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+            arguments("-j${Runtime.getRuntime().availableProcessors()}")
+        }
+
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        }
     }
     buildTypes {
         release {
@@ -15,13 +24,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.fragment:fragment:1.1.0'
-    implementation 'androidx.preference:preference:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'androidx.fragment:fragment:1.2.4'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
 
 }

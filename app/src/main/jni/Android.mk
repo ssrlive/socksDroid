@@ -16,6 +16,8 @@
 LOCAL_PATH := $(call my-dir)
 ROOT_PATH := $(LOCAL_PATH)
 
+BUILD_SHARED_EXECUTABLE := $(LOCAL_PATH)/build-shared-executable.mk
+
 ########################################################
 ## pdnsd library
 ########################################################
@@ -28,7 +30,7 @@ LOCAL_MODULE    := pdnsd
 LOCAL_SRC_FILES := $(PDNSD_SOURCES:$(LOCAL_PATH)/%=%)
 LOCAL_CFLAGS    := -Wall -O2 -I$(LOCAL_PATH)/pdnsd -DHAVE_STPCPY
 
-include $(BUILD_EXECUTABLE)
+include $(BUILD_SHARED_EXECUTABLE)
 
 ########################################################
 ## libancillary
@@ -153,7 +155,7 @@ LOCAL_LDLIBS := -ldl -llog
 
 LOCAL_SRC_FILES := $(addprefix badvpn/, $(TUN2SOCKS_SOURCES))
 
-include $(BUILD_EXECUTABLE)
+include $(BUILD_SHARED_EXECUTABLE)
 
 # Import cpufeatures
 $(call import-module,android/cpufeatures)
