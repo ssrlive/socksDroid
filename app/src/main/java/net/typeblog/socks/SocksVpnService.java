@@ -43,7 +43,7 @@ public class SocksVpnService extends VpnService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        if (DEBUG) {
+        if (BuildConfig.DEBUG) {
             Log.d(TAG, "starting");
         }
 
