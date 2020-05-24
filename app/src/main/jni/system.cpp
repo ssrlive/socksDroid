@@ -15,11 +15,15 @@
 #define LOGW(...) do { __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__); } while(0)
 #define LOGE(...) do { __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__); } while(0)
 
-void Java_net_typeblog_socks_system_jniclose(JNIEnv *env, jobject thiz, jint fd) {
+extern "C"
+JNIEXPORT void JNICALL
+Java_net_typeblog_socks_System_jniclose(JNIEnv *env, jclass clazz, jint fd) {
     close(fd);
 }
 
-jint Java_net_typeblog_socks_system_sendfd(JNIEnv *env, jobject thiz, jint tun_fd, jstring sock) {
+extern "C"
+JNIEXPORT jint JNICALL
+Java_net_typeblog_socks_System_sendfd(JNIEnv *env, jclass clazz, jint tun_fd, jstring sock) {
     int fd;
     struct sockaddr_un addr;
     const char *sockpath;
@@ -55,9 +59,9 @@ static const char *classPathName = "net/typeblog/socks/System";
 
 static JNINativeMethod method_table[] = {
     { "jniclose", "(I)V",
-        (void*) Java_net_typeblog_socks_system_jniclose },
+        (void*) Java_net_typeblog_socks_System_jniclose },
     { "sendfd", "(ILjava/lang/String;)I",
-        (void*) Java_net_typeblog_socks_system_sendfd }
+        (void*) Java_net_typeblog_socks_System_sendfd }
 };
 
 
