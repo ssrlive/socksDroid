@@ -154,7 +154,6 @@ int read_config_file(const char *nm, globparm_t *global, servparm_array *servers
 	}
 
 	retval=confparse(in,NULL,global,servers,includedepth,errstr);
-close_file:
 	if(fclose(in) && retval) {
 		if(asprintf(errstr,"Error: Could not close %s file %s: %s",
 			    conftype,nm,strerror(errno))<0)

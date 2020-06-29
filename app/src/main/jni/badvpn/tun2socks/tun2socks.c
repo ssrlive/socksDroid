@@ -523,7 +523,7 @@ int main (int argc, char **argv)
     for (;;) {
         int sock2;
         struct sockaddr_un remote;
-        int t = sizeof(remote);
+        socklen_t t = (socklen_t) sizeof(remote);
         if ((sock2 = accept(sock, (struct sockaddr *)&remote, &t)) == -1) { 
             BLog(BLOG_ERROR, "accept() failed: %s (sock = %d)\n", strerror(errno), sock);
             continue;
@@ -633,7 +633,7 @@ int main (int argc, char **argv)
 
     // free clients
     LinkedList1Node *node;
-    while (node = LinkedList1_GetFirst(&tcp_clients)) {
+    while ((node = LinkedList1_GetFirst(&tcp_clients))) {
         struct tcp_client *client = UPPER_OBJECT(node, struct tcp_client, list_node);
         client_murder(client);
     }
@@ -1672,7 +1672,7 @@ err_t common_netif_output (struct netif *netif, struct pbuf *p)
             }
             memcpy(device_write_buf + len, p->payload, p->len);
             len += p->len;
-        } while (p = p->next);
+        } while ((p = p->next));
 
         SYNC_FROMHERE
         BTap_Send(&device, device_write_buf, len);

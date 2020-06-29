@@ -84,7 +84,7 @@ static int move_expired_timers (BReactor *bsys, btime_t now)
     // move timed out timers to the expired list
     BReactor__TimersTreeRef ref;
     BSmallTimer *timer;
-    while (timer = (ref = BReactor__TimersTree_GetFirst(&bsys->timers_tree, 0)).link) {
+    while ((timer = ((ref = BReactor__TimersTree_GetFirst(&bsys->timers_tree, 0))).link)) {
         ASSERT(timer->state == TIMER_STATE_RUNNING)
         
         // if it's in the future, stop
@@ -127,7 +127,7 @@ static void move_first_timers (BReactor *bsys)
     
     // also move other timers with the same timeout
     BSmallTimer *timer;
-    while (timer = (ref = BReactor__TimersTree_GetFirst(&bsys->timers_tree, 0)).link) {
+    while ((timer = ((ref = BReactor__TimersTree_GetFirst(&bsys->timers_tree, 0))).link)) {
         ASSERT(timer->state == TIMER_STATE_RUNNING)
         ASSERT(timer->absTime >= first_time)
         
@@ -540,7 +540,7 @@ static void wait_for_events (BReactor *bsys)
     
     // reset limit objects
     LinkedList1Node *list_node;
-    while (list_node = LinkedList1_GetFirst(&bsys->active_limits_list)) {
+    while ((list_node = LinkedList1_GetFirst(&bsys->active_limits_list))) {
         BReactorLimit *limit = UPPER_OBJECT(list_node, BReactorLimit, active_limits_list_node);
         ASSERT(limit->count > 0)
         limit->count = 0;

@@ -113,7 +113,7 @@
 #ifdef NDEBUG
     #define DEBUG_ZERO_MEMORY(buf, len) {}
     #define ASSERT(e) {}
-    #define ASSERT_EXECUTE(e) { (e); }
+    #define ASSERT_EXECUTE(e) { (void)(e); }
 #else
     #define DEBUG_ZERO_MEMORY(buf, len) { memset((buf), 0, (len)); }
     #ifdef BADVPN_USE_C_ASSERT

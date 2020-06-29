@@ -112,8 +112,8 @@ inline static int usleep_r(unsigned long useconds)
   __attribute__((always_inline));
 inline static int usleep_r(unsigned long useconds)
 {
-  struct timespec ts = { tv_sec: (useconds / 1000000),
-			 tv_nsec: (useconds % 1000000) * 1000ul };
+  struct timespec ts = { (useconds / 1000000),
+			  (useconds % 1000000) * 1000ul };
 
   return nanosleep(&ts, NULL);
 }
@@ -126,7 +126,7 @@ inline static int sleep_r (unsigned int seconds)
   __attribute__((always_inline));
 inline static int sleep_r (unsigned int seconds)
 {
-  struct timespec ts = { tv_sec: seconds, tv_nsec: 0 };
+  struct timespec ts = { seconds, 0 };
 
   return nanosleep(&ts, NULL);
 }
