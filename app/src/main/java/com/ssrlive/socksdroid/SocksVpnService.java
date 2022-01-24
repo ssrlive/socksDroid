@@ -1,4 +1,4 @@
-package net.typeblog.socks;
+package com.ssrlive.socksdroid;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -12,14 +12,14 @@ import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.util.Log;
 
-import net.typeblog.socks.util.Routes;
-import net.typeblog.socks.util.Utility;
+import com.ssrlive.socksdroid.util.Routes;
+import com.ssrlive.socksdroid.util.Utility;
 
 import java.util.Locale;
 import java.util.Objects;
 
-import static net.typeblog.socks.util.Constants.*;
-import static net.typeblog.socks.BuildConfig.DEBUG;
+import static com.ssrlive.socksdroid.util.Constants.*;
+import static com.ssrlive.socksdroid.BuildConfig.DEBUG;
 
 public class SocksVpnService extends VpnService {
     class VpnBinder extends IVpnService.Stub {
@@ -72,7 +72,7 @@ public class SocksVpnService extends VpnService {
         // Notifications on Oreo and above need a channel
         Notification.Builder builder;
         if (Build.VERSION.SDK_INT >= 26) {
-            String NOTIFICATION_CHANNEL_ID = "net.typeblog.socks";
+            String NOTIFICATION_CHANNEL_ID = "com.ssrlive.socksdroid";
             NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
                     getString(R.string.channel_name), NotificationManager.IMPORTANCE_NONE);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -164,7 +164,7 @@ public class SocksVpnService extends VpnService {
         if (!perApp) {
             // Just bypass myself
             try {
-                b.addDisallowedApplication("net.typeblog.socks");
+                b.addDisallowedApplication("com.ssrlive.socksdroid");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -172,7 +172,7 @@ public class SocksVpnService extends VpnService {
             if (bypass) {
                 // First, bypass myself
                 try {
-                    b.addDisallowedApplication("net.typeblog.socks");
+                    b.addDisallowedApplication("com.ssrlive.socksdroid");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -189,7 +189,7 @@ public class SocksVpnService extends VpnService {
                 }
             } else {
                 for (String p : apps) {
-                    if (TextUtils.isEmpty(p) || p.trim().equals("net.typeblog.socks")) {
+                    if (TextUtils.isEmpty(p) || p.trim().equals("com.ssrlive.socksdroid")) {
                         continue;
                     }
 

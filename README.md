@@ -7,4 +7,4 @@ This is an updated version of [SocksDroid by PeterCxy](https://github.com/PeterC
 
 The project is in maintenance mode: no new features are planned, only bug fixes and compatibility upgrades.
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200">](https://play.google.com/store/apps/details?id=net.typeblog.socks)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200">](https://play.google.com/store/apps/details?id=com.ssrlive.socksdroid)

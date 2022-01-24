@@ -409,8 +409,8 @@ int main (int argc, char **argv)
 
     if (options.fake_proc) {
         // Fake process name to cheat on Lollipop
-        strcpy(argv[0], "net.typeblog.socks");
-        prctl(PR_SET_NAME, "net.typeblog.socks");
+        strcpy(argv[0], "com.ssrlive.socksdroid");
+        prctl(PR_SET_NAME, "com.ssrlive.socksdroid");
     }
 
     // handle --help and --version

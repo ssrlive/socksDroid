@@ -1,10 +1,10 @@
-package net.typeblog.socks.util;
+package com.ssrlive.socksdroid.util;
 
 import android.content.Context;
 import android.net.VpnService;
 
-import net.typeblog.socks.R;
-import static net.typeblog.socks.util.Constants.*;
+import com.ssrlive.socksdroid.R;
+import static com.ssrlive.socksdroid.util.Constants.*;
 
 public class Routes {
     public static void addRoutes(Context context, VpnService.Builder builder, String name) {

@@ -1,4 +1,4 @@
-package net.typeblog.socks.util;
+package com.ssrlive.socksdroid.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import java.io.OutputStream;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import net.typeblog.socks.R;
-import net.typeblog.socks.SocksVpnService;
-import static net.typeblog.socks.util.Constants.*;
+import com.ssrlive.socksdroid.R;
+import com.ssrlive.socksdroid.SocksVpnService;
+import static com.ssrlive.socksdroid.util.Constants.*;
 
 public class Utility {
     private static final String TAG = Utility.class.getSimpleName();

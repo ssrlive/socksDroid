@@ -1,4 +1,4 @@
-package net.typeblog.socks.util;
+package com.ssrlive.socksdroid.util;
 
 public class Constants
 {

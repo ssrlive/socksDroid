@@ -1,4 +1,4 @@
-package net.typeblog.socks;
+package com.ssrlive.socksdroid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,9 +18,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import net.typeblog.socks.util.Profile;
-import net.typeblog.socks.util.ProfileManager;
-import net.typeblog.socks.util.Utility;
+import com.ssrlive.socksdroid.util.Profile;
+import com.ssrlive.socksdroid.util.ProfileManager;
+import com.ssrlive.socksdroid.util.Utility;
 
 import java.util.Locale;
 
@@ -32,22 +32,22 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import static net.typeblog.socks.util.Constants.PREF_ADV_APP_BYPASS;
-import static net.typeblog.socks.util.Constants.PREF_ADV_APP_LIST;
-import static net.typeblog.socks.util.Constants.PREF_ADV_AUTO_CONNECT;
-import static net.typeblog.socks.util.Constants.PREF_ADV_DNS;
-import static net.typeblog.socks.util.Constants.PREF_ADV_DNS_PORT;
-import static net.typeblog.socks.util.Constants.PREF_ADV_PER_APP;
-import static net.typeblog.socks.util.Constants.PREF_ADV_ROUTE;
-import static net.typeblog.socks.util.Constants.PREF_AUTH_PASSWORD;
-import static net.typeblog.socks.util.Constants.PREF_AUTH_USERNAME;
-import static net.typeblog.socks.util.Constants.PREF_AUTH_USERPW;
-import static net.typeblog.socks.util.Constants.PREF_IPV6_PROXY;
-import static net.typeblog.socks.util.Constants.PREF_PROFILE;
-import static net.typeblog.socks.util.Constants.PREF_SERVER_IP;
-import static net.typeblog.socks.util.Constants.PREF_SERVER_PORT;
-import static net.typeblog.socks.util.Constants.PREF_UDP_GW;
-import static net.typeblog.socks.util.Constants.PREF_UDP_PROXY;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_APP_BYPASS;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_APP_LIST;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_AUTO_CONNECT;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_DNS;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_DNS_PORT;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_PER_APP;
+import static com.ssrlive.socksdroid.util.Constants.PREF_ADV_ROUTE;
+import static com.ssrlive.socksdroid.util.Constants.PREF_AUTH_PASSWORD;
+import static com.ssrlive.socksdroid.util.Constants.PREF_AUTH_USERNAME;
+import static com.ssrlive.socksdroid.util.Constants.PREF_AUTH_USERPW;
+import static com.ssrlive.socksdroid.util.Constants.PREF_IPV6_PROXY;
+import static com.ssrlive.socksdroid.util.Constants.PREF_PROFILE;
+import static com.ssrlive.socksdroid.util.Constants.PREF_SERVER_IP;
+import static com.ssrlive.socksdroid.util.Constants.PREF_SERVER_PORT;
+import static com.ssrlive.socksdroid.util.Constants.PREF_UDP_GW;
+import static com.ssrlive.socksdroid.util.Constants.PREF_UDP_PROXY;
 
 public class ProfileFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener,
         CompoundButton.OnCheckedChangeListener {

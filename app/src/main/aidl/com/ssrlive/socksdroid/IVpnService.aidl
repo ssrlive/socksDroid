@@ -1,4 +1,4 @@
-package net.typeblog.socks;
+package com.ssrlive.socksdroid;
 
 interface IVpnService
 {

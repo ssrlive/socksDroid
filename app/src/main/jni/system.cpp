@@ -17,13 +17,13 @@
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_net_typeblog_socks_System_jniclose(JNIEnv *env, jclass clazz, jint fd) {
+Java_com_ssrlive_socksdroid_System_jniclose(JNIEnv *env, jclass clazz, jint fd) {
     close(fd);
 }
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_net_typeblog_socks_System_sendfd(JNIEnv *env, jclass clazz, jint tun_fd, jstring sock) {
+Java_com_ssrlive_socksdroid_System_sendfd(JNIEnv *env, jclass clazz, jint tun_fd, jstring sock) {
     int fd;
     struct sockaddr_un addr;
     const char *sockpath;
@@ -55,13 +55,13 @@ Java_net_typeblog_socks_System_sendfd(JNIEnv *env, jclass clazz, jint tun_fd, js
     return 0;
 }
 
-static const char *classPathName = "net/typeblog/socks/System";
+static const char *classPathName = "com/ssrlive/socksdroid/System";
 
 static JNINativeMethod method_table[] = {
     { "jniclose", "(I)V",
-        (void*) Java_net_typeblog_socks_System_jniclose },
+        (void*) Java_com_ssrlive_socksdroid_System_jniclose },
     { "sendfd", "(ILjava/lang/String;)I",
-        (void*) Java_net_typeblog_socks_System_sendfd }
+        (void*) Java_com_ssrlive_socksdroid_System_sendfd }
 };
 
 

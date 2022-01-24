@@ -1,4 +1,4 @@
-package net.typeblog.socks.util;
+package com.ssrlive.socksdroid.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.typeblog.socks.R;
-import static net.typeblog.socks.util.Constants.*;
+import com.ssrlive.socksdroid.R;
+import static com.ssrlive.socksdroid.util.Constants.*;
 
 public class ProfileManager {
 
