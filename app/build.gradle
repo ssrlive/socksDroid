@@ -38,14 +38,14 @@ android {
         includeInBundle false
     }
     buildToolsVersion '31.0.0'
-    ndkVersion '23.0.7599858'
+    ndkVersion = '23.1.7779620'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'androidx.fragment:fragment:1.3.6'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.fragment:fragment:1.4.0'
     implementation 'androidx.preference:preference:1.1.1'
-    implementation 'com.google.android.material:material:1.5.0-alpha04'
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
 
 }
